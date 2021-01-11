@@ -124,3 +124,12 @@ def logout_view(request):
 
 def serve_file(http_request, path):
     return sendfile(http_request, MEDIA_ROOT + "/" + path)
+
+
+
+def add_factor(request):
+    factor = Factor(name=request.POST['name'],price=request.POST['price'],description=request.POST['description'],factor_owner=request.user, factor_group=request.POST['uuid'])
+    factor.save()
+    factor.factor_members.set(request.POST['factor_members'])
+    factor.save()
+    return HttpResponseRedirect(reverse("home", kwargs={"uuid": request.POST['uuid']}))
