@@ -1,0 +1,109 @@
+Index: dong_yab/urls.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>\"\"\"dong_yab URL Configuration\r\n\r\nThe `urlpatterns` list routes URLs to views. For more information please see:\r\n    https://docs.djangoproject.com/en/2.2/topics/http/urls/\r\nExamples:\r\nFunction views\r\n    1. Add an import:  from my_app import views\r\n    2. Add a URL to urlpatterns:  path('', views.home, name='home')\r\nClass-based views\r\n    1. Add an import:  from other_app.views import Home\r\n    2. Add a URL to urlpatterns:  path('', Home.as_view(), name='home')\r\nIncluding another URLconf\r\n    1. Import the include() function: from django.urls import include, path\r\n    2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))\r\n\"\"\"\r\nfrom django.contrib import admin\r\nfrom django.urls import path\r\nfrom account import views\r\nfrom account.views import serve_file\r\nfrom dong_yab import settings\r\nfrom django.conf.urls.static import static\r\n\r\nurlpatterns = [\r\n    path(\"\", views.first_page),\r\n    path('admin/', admin.site.urls),\r\n    path('account/', views.sign, name=\"sign\"),\r\n    path('home/<str:uuid>/', views.home, name=\"home\"),\r\n    path(\"logout/\", views.logout_view, name=\"logout\"),\r\n    path(\"add_balance/\", views.add_balance, name=\"add_balance\"),\r\n    path('add_group/', views.add_group, name=\"add_group\"),\r\n    path('media/(<str:path>)', serve_file, name='serve_file'),\r\n    path('join_group/', views.join_group, name=\"join_group\")\r\n]\r\n\r\nif settings.DEBUG:\r\n    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATICFILES_DIRS[-1])\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- dong_yab/urls.py	(revision 0fa2e17c3e0abcdf510990dca2670c6e4e338693)
++++ dong_yab/urls.py	(date 1610402571022)
+@@ -23,7 +23,7 @@
+ urlpatterns = [
+     path("", views.first_page),
+     path('admin/', admin.site.urls),
+-    path('account/', views.sign, name="sign"),
++    path('account/', views.sign, name="signin"),
+     path('home/<str:uuid>/', views.home, name="home"),
+     path("logout/", views.logout_view, name="logout"),
+     path("add_balance/", views.add_balance, name="add_balance"),
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"6ef093dc-549a-4e9a-8165-77ee04b568c1\" name=\"Default Changelist\" comment=\"\">\r\n      <change afterPath=\"$PROJECT_DIR$/account/migrations/0008_auto_20210111_1906.py\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/requirment.txt\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/account/models.py\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/account/models.py\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/account/views.py\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/account/views.py\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/db.sqlite3\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/db.sqlite3\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/dong_yab/settings.py\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/dong_yab/settings.py\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/dong_yab/urls.py\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/dong_yab/urls.py\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/templates/index.html\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/templates/index.html\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"DjangoConsoleOptions\" custom-start-script=\"import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)\">\r\n    <option name=\"myCustomStartScript\" value=\"import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)\" />\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"ProjectId\" id=\"1mub7Ppx70sfbei8wKeVAYlsWxd\" />\r\n  <component name=\"ProjectLevelVcsManager\" settingsEditedManually=\"true\" />\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n    <option name=\"showMembers\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\">\r\n    <property name=\"RunOnceActivity.OpenProjectViewOnStart\" value=\"true\" />\r\n    <property name=\"RunOnceActivity.ShowReadmeOnStart\" value=\"true\" />\r\n    <property name=\"WebServerToolWindowFactoryState\" value=\"false\" />\r\n    <property name=\"last_opened_file_path\" value=\"$PROJECT_DIR$/../evisa_Core\" />\r\n    <property name=\"settings.editor.selected.configurable\" value=\"com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable\" />\r\n  </component>\r\n  <component name=\"RecentsManager\">\r\n    <key name=\"CopyFile.RECENT_KEYS\">\r\n      <recent name=\"$PROJECT_DIR$/static\" />\r\n      <recent name=\"$PROJECT_DIR$/templates\" />\r\n    </key>\r\n  </component>\r\n  <component name=\"RunManager\">\r\n    <configuration name=\"dong_yab\" type=\"Python.DjangoServer\" factoryName=\"Django server\">\r\n      <module name=\"dong_yab\" />\r\n      <option name=\"INTERPRETER_OPTIONS\" value=\"\" />\r\n      <option name=\"PARENT_ENVS\" value=\"true\" />\r\n      <envs>\r\n        <env name=\"PYTHONUNBUFFERED\" value=\"1\" />\r\n        <env name=\"DJANGO_SETTINGS_MODULE\" value=\"dong_yab.settings\" />\r\n      </envs>\r\n      <option name=\"SDK_HOME\" value=\"/usr/bin/python3.8\" />\r\n      <option name=\"WORKING_DIRECTORY\" value=\"\" />\r\n      <option name=\"IS_MODULE_SDK\" value=\"false\" />\r\n      <option name=\"ADD_CONTENT_ROOTS\" value=\"true\" />\r\n      <option name=\"ADD_SOURCE_ROOTS\" value=\"true\" />\r\n      <option name=\"launchJavascriptDebuger\" value=\"false\" />\r\n      <option name=\"port\" value=\"8000\" />\r\n      <option name=\"host\" value=\"\" />\r\n      <option name=\"additionalOptions\" value=\"\" />\r\n      <option name=\"browserUrl\" value=\"\" />\r\n      <option name=\"runTestServer\" value=\"false\" />\r\n      <option name=\"runNoReload\" value=\"false\" />\r\n      <option name=\"useCustomRunCommand\" value=\"false\" />\r\n      <option name=\"customRunCommand\" value=\"\" />\r\n      <method v=\"2\" />\r\n    </configuration>\r\n  </component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"SvnConfiguration\">\r\n    <configuration />\r\n  </component>\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"6ef093dc-549a-4e9a-8165-77ee04b568c1\" name=\"Default Changelist\" comment=\"\" />\r\n      <created>1610346255177</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1610346255177</updated>\r\n      <workItem from=\"1610346263276\" duration=\"308000\" />\r\n      <workItem from=\"1610346606490\" duration=\"86000\" />\r\n      <workItem from=\"1610346718566\" duration=\"14659000\" />\r\n      <workItem from=\"1610385825020\" duration=\"14910000\" />\r\n    </task>\r\n    <task id=\"LOCAL-00001\" summary=\"edit login and sign in\">\r\n      <created>1610389462809</created>\r\n      <option name=\"number\" value=\"00001\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1610389462809</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00002\" summary=\"add balance\">\r\n      <created>1610390874331</created>\r\n      <option name=\"number\" value=\"00002\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00002\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1610390874331</updated>\r\n    </task>\r\n    <option name=\"localTasksCounter\" value=\"3\" />\r\n    <servers />\r\n  </component>\r\n  <component name=\"TypeScriptGeneratedFilesManager\">\r\n    <option name=\"version\" value=\"3\" />\r\n  </component>\r\n  <component name=\"Vcs.Log.Tabs.Properties\">\r\n    <option name=\"TAB_STATES\">\r\n      <map>\r\n        <entry key=\"MAIN\">\r\n          <value>\r\n            <State />\r\n          </value>\r\n        </entry>\r\n      </map>\r\n    </option>\r\n  </component>\r\n  <component name=\"VcsManagerConfiguration\">\r\n    <MESSAGE value=\"edit login and sign in\" />\r\n    <MESSAGE value=\"add balance\" />\r\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"add balance\" />\r\n  </component>\r\n  <component name=\"XDebuggerManager\">\r\n    <breakpoint-manager>\r\n      <breakpoints>\r\n        <line-breakpoint enabled=\"true\" suspend=\"THREAD\" type=\"python-line\">\r\n          <url>file://$PROJECT_DIR$/account/views.py</url>\r\n          <line>70</line>\r\n          <option name=\"timeStamp\" value=\"18\" />\r\n        </line-breakpoint>\r\n      </breakpoints>\r\n    </breakpoint-manager>\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- .idea/workspace.xml	(revision 0fa2e17c3e0abcdf510990dca2670c6e4e338693)
++++ .idea/workspace.xml	(date 1610402580256)
+@@ -1,15 +1,32 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+ <project version="4">
++  <component name="BranchesTreeState">
++    <expand>
++      <path>
++        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
++        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
++      </path>
++      <path>
++        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
++        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
++      </path>
++      <path>
++        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
++        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
++        <item name="GROUP_NODE:ori" type="e8cecc67:BranchNodeDescriptor" />
++      </path>
++      <path>
++        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
++        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
++        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
++      </path>
++    </expand>
++    <select />
++  </component>
+   <component name="ChangeListManager">
+     <list default="true" id="6ef093dc-549a-4e9a-8165-77ee04b568c1" name="Default Changelist" comment="">
+-      <change afterPath="$PROJECT_DIR$/account/migrations/0008_auto_20210111_1906.py" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/requirment.txt" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/account/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/account/models.py" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/account/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/account/views.py" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/dong_yab/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/dong_yab/settings.py" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/dong_yab/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/dong_yab/urls.py" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/index.html" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+@@ -68,7 +85,7 @@
+       <method v="2" />
+     </configuration>
+   </component>
+-  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
++  <component name="SpellCheckerSettings" BundledDictionaries="0" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" Dictionaries="0" CorrectionsLimit="5" DefaultDictionary="application-level" UseSingleDictionary="true" />
+   <component name="SvnConfiguration">
+     <configuration />
+   </component>
+@@ -114,21 +131,21 @@
+         </entry>
+       </map>
+     </option>
++    <option name="oldMeFiltersMigrated" value="true" />
+   </component>
+   <component name="VcsManagerConfiguration">
+     <MESSAGE value="edit login and sign in" />
+     <MESSAGE value="add balance" />
+     <option name="LAST_COMMIT_MESSAGE" value="add balance" />
+   </component>
+-  <component name="XDebuggerManager">
+-    <breakpoint-manager>
+-      <breakpoints>
+-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+-          <url>file://$PROJECT_DIR$/account/views.py</url>
+-          <line>70</line>
+-          <option name="timeStamp" value="18" />
+-        </line-breakpoint>
+-      </breakpoints>
+-    </breakpoint-manager>
++  <component name="WindowStateProjectService">
++    <state x="351" y="0" key="#dong_yab" timestamp="1610402195610">
++      <screen x="0" y="0" width="1280" height="813" />
++    </state>
++    <state x="351" y="0" key="#dong_yab/0.0.1280.813@0.0.1280.813" timestamp="1610402195610" />
++    <state x="303" y="134" width="672" height="678" key="search.everywhere.popup" timestamp="1610402406239">
++      <screen x="0" y="0" width="1280" height="813" />
++    </state>
++    <state x="303" y="134" width="672" height="678" key="search.everywhere.popup/0.0.1280.813@0.0.1280.813" timestamp="1610402406239" />
+   </component>
+ </project>
+\ No newline at end of file
